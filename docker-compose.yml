@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  rust_nightly:
+    image: rust:alpine
+    container_name: fumseck
+    hostname: rustup.fumseck.local
+    domainname: fumseck.local
+    tty: true
+    volumes:
+      - ${FOLDER_PATH}:/rust
+    networks:
+       fumseck_devEnvLocal:
+        aliases:
+          - rust.devEnv.local
+
+networks:
+  fumseck_devEnvLocal:
+    driver: bridge
+    name: fumseck_devEnvLocal
